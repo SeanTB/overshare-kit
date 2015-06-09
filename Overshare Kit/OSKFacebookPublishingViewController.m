@@ -369,22 +369,27 @@
 	NSString *audienceName = nil;
 	NSString *audienceKey = [self.activity currentAudience];
 
+    NSString * stringToShowAudienceKey = [@"********This is the audience key " stringByAppendingString:audienceKey];
+    NSLog(@"%@", stringToShowAudienceKey);
+
 	OSKPresentationManager *presManager = [OSKPresentationManager sharedInstance];
     
-//	if ([audienceKey isEqualToString:ACFacebookAudienceEveryone]) {
-//		audienceName = [presManager localizedText_FacebookAudience_Public];
-//	}
-//    else if ([audienceKey isEqualToString:ACFacebookAudienceFriends]) {
-//		audienceName = [presManager localizedText_FacebookAudience_Friends];
-//	}
-//    else if ([audienceKey isEqualToString:ACFacebookAudienceOnlyMe]) {
-//		audienceName = [presManager localizedText_FacebookAudience_OnlyMe];
-//	}
-    
+	if ([audienceKey isEqualToString:ACFacebookAudienceEveryone]) {
+		audienceName = [presManager localizedText_FacebookAudience_Public];
+	}
+    else if ([audienceKey isEqualToString:ACFacebookAudienceFriends]) {
+		audienceName = [presManager localizedText_FacebookAudience_Friends];
+	}
+    else if ([audienceKey isEqualToString:ACFacebookAudienceOnlyMe]) {
+		audienceName = [presManager localizedText_FacebookAudience_OnlyMe];
+	}
+    NSString * stringToShowAudienceName = [@"********This is the audience name " stringByAppendingString:audienceName];
+    NSLog(@"%@", stringToShowAudienceName);
+
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		[self updateAudienceButton_Phone:audienceKey];
+		[self updateAudienceButton_Phone:audienceName];
 	} else {
-		[self updateAudienceButton_Pad:audienceKey];
+		[self updateAudienceButton_Pad:audienceName];
 	}
 }
 
