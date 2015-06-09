@@ -11,6 +11,8 @@
 #import "OSKEmailActivity.h"
 #import "OSKShareableContentItem.h"
 #import "OSKMimeAttachment.h"
+#import "OSKPresentationManager.h"
+
 
 @interface OSKMailComposeViewController () <MFMailComposeViewControllerDelegate, UINavigationControllerDelegate>
 
@@ -64,6 +66,15 @@
             [self addAttachmentData:mimeAttachment.data mimeType:mimeAttachment.mimeType fileName:mimeAttachment.fileName];
         }
     }
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    if([[[OSKPresentationManager sharedInstance] styleDelegate] respondsToSelector:@selector(osk_statusBarStyle)])
+    {
+        return [[[OSKPresentationManager sharedInstance] styleDelegate] osk_statusBarStyle];
+    }
+    return [[UIApplication sharedApplication] statusBarStyle];
 }
 
 @end

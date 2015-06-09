@@ -369,9 +369,6 @@
 	NSString *audienceName = nil;
 	NSString *audienceKey = [self.activity currentAudience];
 
-    NSString * stringToShowAudienceKey = [@"********This is the audience key " stringByAppendingString:audienceKey];
-    NSLog(@"%@", stringToShowAudienceKey);
-
 	OSKPresentationManager *presManager = [OSKPresentationManager sharedInstance];
     
 	if ([audienceKey isEqualToString:ACFacebookAudienceEveryone]) {
@@ -383,8 +380,6 @@
     else if ([audienceKey isEqualToString:ACFacebookAudienceOnlyMe]) {
 		audienceName = [presManager localizedText_FacebookAudience_OnlyMe];
 	}
-    NSString * stringToShowAudienceName = [@"********This is the audience name " stringByAppendingString:audienceName];
-    NSLog(@"%@", stringToShowAudienceName);
 
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 		[self updateAudienceButton_Phone:audienceName];

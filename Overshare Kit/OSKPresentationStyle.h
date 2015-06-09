@@ -72,6 +72,9 @@ typedef NS_ENUM(NSInteger, OSKActivitySheetViewControllerStyle) {
  */
 - (CGFloat)osk_textViewFontSize;
 
+
+-(UIStatusBarStyle)osk_statusBarStyle;
+
 /**
  Override this method to customize the appearance of OvershareKit modal navigation controllers prior to their presentation.
  */
